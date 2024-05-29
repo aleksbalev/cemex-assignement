@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { OrdersApiService } from '../shared/data-access/orders.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  template: ` <p>Now its working</p> `,
+  imports: [CommonModule],
+  template: `{{ ordersService.orders() | json }}`,
 })
-export default class OrderHistoryComponent {}
+export default class OrderHistoryComponent {
+  protected ordersService = inject(OrdersApiService);
+}
