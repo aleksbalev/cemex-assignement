@@ -1,34 +1,47 @@
-<form [formGroup]="formGroup">
-  <label> Status </label>
-  <form [formGroup]="formGroup.controls.statuses">
-    <mat-checkbox
-      color="accent"
-      [formControl]="formGroup.controls.statuses.controls.pending"
-    >
-      Pending
-    </mat-checkbox>
-    <mat-checkbox
-      color="accent"
-      [formControl]="formGroup.controls.statuses.controls.inProgress"
-    >
-      In Progress
-    </mat-checkbox>
-    <mat-checkbox
-      color="accent"
-      [formControl]="formGroup.controls.statuses.controls.completed"
-    >
-      Completed
-    </mat-checkbox>
-  </form>
-  <label for="productLine">Product Line</label>
-  <select name="productLine" [formControl]="formGroup.controls.productLine">
-    <option></option>
-    <option *ngFor="let option of productLineOptions" [value]="option">
-      {{ option }}
-    </option>
-  </select>
+<form class="filter-panel__form" [formGroup]="formGroup">
+  <div class="filter-panel__statuses">
+    <label> Status </label>
+    <form [formGroup]="formGroup.controls.statuses">
+      <mat-checkbox
+        color="accent"
+        [formControl]="formGroup.controls.statuses.controls.pending"
+      >
+        Pending
+      </mat-checkbox>
+      <mat-checkbox
+        color="accent"
+        [formControl]="formGroup.controls.statuses.controls.inProgress"
+      >
+        In Progress
+      </mat-checkbox>
+      <mat-checkbox
+        color="accent"
+        [formControl]="formGroup.controls.statuses.controls.completed"
+      >
+        Completed
+      </mat-checkbox>
+    </form>
+  </div>
+
+  <div class="filter-panel__product-line">
+    <label for="productLine">Product Line</label>
+
+    <div class="filter-panel__select-wrapper">
+      <select
+        class="filter-panel__select"
+        name="productLine"
+        [formControl]="formGroup.controls.productLine"
+      >
+        <option value="" selected>All Product Lines</option>
+        <option *ngFor="let option of productLineOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+  </div>
 
   <app-date-range-picker
+    class="filter-panel__date-range-picker"
     [formControl]="formGroup.controls.dateRange"
   ></app-date-range-picker>
 </form>

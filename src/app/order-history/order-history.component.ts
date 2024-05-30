@@ -30,6 +30,7 @@ import { applyOrdersFilters } from './utils/filter-utils';
     OrderTableComponent,
   ],
   templateUrl: './order-history.component.html',
+  styleUrl: './order-history.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class OrderHistoryComponent {

@@ -1,10 +1,15 @@
 <section>
-  <app-filter-panel
-    [formGroup]="formGroup"
-    [productLineOptions]="productLineOptions"
-  ></app-filter-panel>
+  <div class="order-history__filter-panel">
+    <app-filter-panel
+      [formGroup]="formGroup"
+      [productLineOptions]="productLineOptions"
+    ></app-filter-panel>
 
-  <app-search-input [searchControl]="searchControl"></app-search-input>
+    <app-search-input
+      class="order-history__search"
+      [searchControl]="searchControl"
+    ></app-search-input>
+  </div>
 
   <app-order-table
     *ngIf="filteredOrders$ | async as orders"
