@@ -10,3 +10,13 @@ export interface FilterPanleForm {
   productLine: FormControl<string | null>;
   dateRange: FormControl<DateRangeState | null>;
 }
+
+export type FilterPanelFormState = Partial<{
+  statuses: Partial<{
+    pending: boolean | null;
+    inProgress: boolean | null;
+    completed: boolean | null;
+  }>;
+  productLine: string | null;
+  dateRange: DateRangeState | null;
+}>;

@@ -14,6 +14,6 @@ import { COLUMN_NAME } from './order-table.const';
 export class OrderTableComponent {
   protected readonly columnName = COLUMN_NAME;
 
-  @Input({ required: true }) orders!: Signal<Order[]>;
+  @Input({ required: true }) orders!: Order[];
   @Input({ required: true }) columns!: OrderKeys;
 }

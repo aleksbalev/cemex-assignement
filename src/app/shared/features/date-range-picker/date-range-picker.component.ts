@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -9,7 +9,7 @@ import { DateRangeState } from '../../interfaces';
   standalone: true,
   imports: [MatDatepickerModule, MatLabel, MatFormField],
   templateUrl: './date-range-picker.component.html',
-  styles: ``,
+  styleUrl: './date-range-picker.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -17,6 +17,7 @@ import { DateRangeState } from '../../interfaces';
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateRangePickerComponent implements ControlValueAccessor {
   from: Date | null = null;
