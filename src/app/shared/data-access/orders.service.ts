@@ -1,8 +1,8 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { Order } from '../interfaces/order';
 import { EMPTY, catchError } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HttpClient } from '@angular/common/http';
+import { Order, OrderKeys } from '../interfaces';
 
 export interface OrderState {
   orders: Order[];
@@ -21,7 +21,14 @@ export class OrdersApiService {
 
   // selectors
   orders = computed(() => this.state().orders);
-
+  ordersColumns: OrderKeys = [
+    'status',
+    'orderNumber',
+    'productLine',
+    'product',
+    'quantity',
+    'requestDate',
+  ];
   // sources
   ordersLoaded$ = this.getOrdersList();
 

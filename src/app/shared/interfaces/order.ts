@@ -11,5 +11,7 @@ export interface Order {
   productLine: string;
   product: string;
   quantity: string;
-  dateRequest: Date;
+  requestDate: Date;
 }
+
+export type OrderKeys = Array<Exclude<keyof Order, 'id'>>;

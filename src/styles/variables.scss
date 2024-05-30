@@ -5,13 +5,21 @@
   --color-placeholder: #000000;
   --color-text-normal: #3e3e3e;
   --color-text-bold: #555555;
-  --color-table-header: #6c6c6d;
+  --color-table-title: #606061;
   --color-input-border: #dcdcdc;
   --color-input-label: #69798c;
   --color-text-disabled: #999999;
+
+  --color-border: #e1e1e1;
 
   /* Status colors */
   --color-status-in-progress: #3fa9f5;
   --color-status-pending: #fbb03b;
   --color-status-completed: #7ac943;
+
+  --common-background: #f4f6f9;
+
+  --spacing-sm: 8px;
+
+  --border-radius: 4px;
 }

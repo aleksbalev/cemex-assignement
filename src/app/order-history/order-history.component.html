@@ -1,6 +1,13 @@
-<app-filter-panel
-  [formGroup]="formGroup"
-  [productLineOptions]="productLineOptions"
-></app-filter-panel>
+<section>
+  <app-filter-panel
+    [formGroup]="formGroup"
+    [productLineOptions]="productLineOptions"
+  ></app-filter-panel>
 
-{{ ordersService.orders() | json }}
+  <app-search-input [searchControl]="searchControl"></app-search-input>
+
+  <app-order-table
+    [orders]="ordersService.orders"
+    [columns]="ordersService.ordersColumns"
+  ></app-order-table>
+</section>

@@ -5,9 +5,19 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `<router-outlet></router-outlet>`,
+  template: `
+    <div class="container">
+      <header>
+        <h1>{{ title }}</h1>
+      </header>
+
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  `,
   styles: [],
 })
 export class AppComponent {
-  title = 'cemex-assignement';
+  title = 'Order History';
 }

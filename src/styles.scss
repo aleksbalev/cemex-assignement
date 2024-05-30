@@ -1,6 +1,9 @@
 @use "@angular/material" as mat;
 
 @import "styles/variables.scss";
+@import "styles/mixins.scss";
+@import "styles/base.scss";
+@import "styles/layout.scss";
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -39,19 +42,3 @@ $cemex-assignement-theme: mat.define-light-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($cemex-assignement-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  color: var(--color-text-normal);
-}
-
-h1 {
-  color: var(--color-primary-dark);
-}

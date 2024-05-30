@@ -1,19 +1,29 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { OrdersApiService } from '../shared/data-access/orders.service';
 import { CommonModule } from '@angular/common';
 import { FilterPanelComponent } from './ui/filter-panel/filter-panel.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FilterPanleForm } from './interfaces/filter-panel';
-import { DateRangeState } from '../shared/features/date-range-picker/interfaces/date-range-picker';
+import { DateRangeState } from '../shared/interfaces';
+import { SearchInputComponent } from '../shared/ui/search-input/search-input.component';
+import { OrderTableComponent } from './ui/order-table/order-table.component';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FilterPanelComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FilterPanelComponent,
+    SearchInputComponent,
+    OrderTableComponent,
+  ],
   templateUrl: './order-history.component.html',
 })
 export default class OrderHistoryComponent {
   protected ordersService = inject(OrdersApiService);
+
+  protected searchControl = new FormControl<string>('');
 
   protected formGroup = new FormGroup<FilterPanleForm>({
     statuses: new FormGroup({

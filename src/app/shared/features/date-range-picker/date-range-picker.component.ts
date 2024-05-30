@@ -1,8 +1,8 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DateRangeState } from './interfaces/date-range-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { DateRangeState } from '../../interfaces';
 
 @Component({
   selector: 'app-date-range-picker',

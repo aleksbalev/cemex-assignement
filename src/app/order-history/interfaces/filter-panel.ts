@@ -1,5 +1,5 @@
 import { FormControl, FormGroup } from '@angular/forms';
-import { DateRangeState } from '../../shared/features/date-range-picker/interfaces/date-range-picker';
+import { DateRangeState } from '../../shared/interfaces';
 
 export interface FilterPanleForm {
   statuses: FormGroup<{
