@@ -1,33 +1,33 @@
 <form [formGroup]="formGroup">
-  <label>
-    <div formArrayName="statuses">
-      <mat-checkbox
-        color="accent"
-        [formControl]="formGroup.controls.statuses.controls.pending"
-      >
-        Pending
-      </mat-checkbox>
-      <mat-checkbox
-        color="accent"
-        [formControl]="formGroup.controls.statuses.controls.inProgress"
-      >
-        In Progress
-      </mat-checkbox>
-      <mat-checkbox
-        color="accent"
-        [formControl]="formGroup.controls.statuses.controls.completed"
-      >
-        Completed
-      </mat-checkbox>
-    </div>
-  </label>
-  <label>
-    <select [formControl]="formGroup.controls.productLine">
-      <option *ngFor="let option of productLineOptions" [value]="option">
-        {{ option }}
-      </option>
-    </select>
-  </label>
+  <label> Status </label>
+  <form [formGroup]="formGroup.controls.statuses">
+    <mat-checkbox
+      color="accent"
+      [formControl]="formGroup.controls.statuses.controls.pending"
+    >
+      Pending
+    </mat-checkbox>
+    <mat-checkbox
+      color="accent"
+      [formControl]="formGroup.controls.statuses.controls.inProgress"
+    >
+      In Progress
+    </mat-checkbox>
+    <mat-checkbox
+      color="accent"
+      [formControl]="formGroup.controls.statuses.controls.completed"
+    >
+      Completed
+    </mat-checkbox>
+  </form>
+  <label for="productLine">Product Line</label>
+  <select name="productLine" [formControl]="formGroup.controls.productLine">
+    <option></option>
+    <option *ngFor="let option of productLineOptions" [value]="option">
+      {{ option }}
+    </option>
+  </select>
+
   <app-date-range-picker
     [formControl]="formGroup.controls.dateRange"
   ></app-date-range-picker>

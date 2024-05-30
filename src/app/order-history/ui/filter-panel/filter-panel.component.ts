@@ -18,7 +18,7 @@ import { DateRangePickerComponent } from '../../../shared/features/date-range-pi
     KeyValuePipe,
   ],
   templateUrl: './filter-panel.component.html',
-  styles: ``,
+  styleUrl: './filter-panel.component.scss',
 })
 export class FilterPanelComponent {
   @Input({ required: true }) formGroup!: FormGroup<FilterPanleForm>;

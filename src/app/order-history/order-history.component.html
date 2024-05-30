@@ -7,7 +7,8 @@
   <app-search-input [searchControl]="searchControl"></app-search-input>
 
   <app-order-table
-    [orders]="ordersService.orders"
+    *ngIf="filteredOrders$ | async as orders"
+    [orders]="orders"
     [columns]="ordersService.ordersColumns"
   ></app-order-table>
 </section>

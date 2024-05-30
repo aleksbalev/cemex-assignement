@@ -27,3 +27,9 @@
     padding: $padding;
   }
 }
+
+@mixin label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-title);
+}

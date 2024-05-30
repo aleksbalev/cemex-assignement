@@ -1,21 +1,36 @@
 <div class="date-range-picker">
-  <mat-label>From</mat-label>
-  <input
-    matInput
-    [matDatepicker]="fromPicker"
-    (dateChange)="onFromDateChange($event.value)"
-    [value]="from"
-  />
-  <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
-  <mat-datepicker #fromPicker></mat-datepicker>
+  <div class="date-range-picker__wrapper">
+    <label>From</label>
+    <div class="date-range-picker__picker">
+      <input
+        class="date-range-picker__input"
+        readonly
+        matInput
+        [matDatepicker]="fromPicker"
+        (dateChange)="onFromDateChange($event.value)"
+        [value]="from"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="fromPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #fromPicker></mat-datepicker>
+    </div>
+  </div>
 
-  <mat-label>To</mat-label>
-  <input
-    matInput
-    [matDatepicker]="toPicker"
-    (dateChange)="onToDateChange($event.value)"
-    [value]="to"
-  />
-  <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
-  <mat-datepicker #toPicker></mat-datepicker>
+  <div class="date-range-picker__wrapper">
+    <label>To</label>
+    <div class="date-range-picker__picker">
+      <input
+        class="date-range-picker__input"
+        readonly
+        matInput
+        [matDatepicker]="toPicker"
+        (dateChange)="onToDateChange($event.value)"
+        [value]="to"
+      />
+      <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+      <mat-datepicker #toPicker></mat-datepicker>
+    </div>
+  </div>
 </div>

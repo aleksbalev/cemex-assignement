@@ -4,20 +4,30 @@
     class="order-row__item"
     [class.order-row__item--bold]="column === 'product'"
   >
-    <!-- Could do a directive from this status things if it will be repeating -->
-    <div
-      *ngIf="column === 'status'"
-      class="order-row__status"
-      [class.order-row__status--pending]="order[column] === statusEnum.Pending"
-      [class.order-row__status--in-progress]="
-        order[column] === statusEnum.InProgress
-      "
-      [class.order-row__status--completed]="
-        order[column] === statusEnum.Completed
-      "
-    ></div>
-    <span>
-      {{ order[column] | statusParser }}
-    </span>
+    <ng-container [ngSwitch]="column">
+      <ng-container *ngSwitchCase="'status'">
+        <div
+          class="order-row__status"
+          [class.order-row__status--pending]="
+            order[column] === statusEnum.Pending
+          "
+          [class.order-row__status--in-progress]="
+            order[column] === statusEnum.InProgress
+          "
+          [class.order-row__status--completed]="
+            order[column] === statusEnum.Completed
+          "
+        ></div>
+        <span>
+          {{ order[column] | statusParser }}
+        </span>
+      </ng-container>
+      <span *ngSwitchCase="'requestDate'">
+        {{ order[column] | date: "dd.MM.yyyy" }}
+      </span>
+      <span *ngSwitchDefault>
+        {{ order[column] }}
+      </span>
+    </ng-container>
   </li>
 </ul>

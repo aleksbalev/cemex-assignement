@@ -3,7 +3,7 @@
     <span *ngFor="let column of columns">{{ columnName[column] }}</span>
   </div>
   <div class="order-table__rows">
-    <ng-container *ngFor="let order of orders()">
+    <ng-container *ngFor="let order of orders">
       <app-order-row [order]="order" [columns]="columns"></app-order-row>
     </ng-container>
   </div>
