@@ -1,0 +1,23 @@
+<ul class="order-row">
+  <li
+    *ngFor="let column of columns"
+    class="order-row__item"
+    [class.order-row__item--bold]="column === 'product'"
+  >
+    <!-- Could do a directive from this status things if it will be repeating -->
+    <div
+      *ngIf="column === 'status'"
+      class="order-row__status"
+      [class.order-row__status--pending]="order[column] === statusEnum.Pending"
+      [class.order-row__status--in-progress]="
+        order[column] === statusEnum.InProgress
+      "
+      [class.order-row__status--completed]="
+        order[column] === statusEnum.Completed
+      "
+    ></div>
+    <span>
+      {{ order[column] | statusParser }}
+    </span>
+  </li>
+</ul>

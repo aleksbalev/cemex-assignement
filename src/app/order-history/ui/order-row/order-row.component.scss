@@ -1,0 +1,45 @@
+@import "../../../../styles/mixins.scss";
+
+.order-row {
+  @include table-view(20px);
+
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-row__item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  text-wrap: nowrap;
+
+  &--bold {
+    font-weight: 500;
+  }
+
+  @include respond-to("large") {
+    margin: auto 0;
+    text-wrap: wrap;
+  }
+}
+
+.order-row__status {
+  width: 28px;
+  height: 18px;
+
+  border-radius: 2px;
+
+  &--pending {
+    background-color: var(--color-status-pending);
+  }
+
+  &--in-progress {
+    background-color: var(--color-status-in-progress);
+  }
+
+  &--completed {
+    background-color: var(--color-status-completed);
+  }
+}
