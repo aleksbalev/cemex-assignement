@@ -1,0 +1,58 @@
+import { Order } from '../../shared/interfaces';
+
+export const ordersMock: Order[] = [
+  {
+    id: 1,
+    status: 1,
+    orderNumber: 3301,
+    productLine: 'Ready-Mix',
+    product: '1-200-2-C-28-12-1-3-000',
+    quantity: '12 m3',
+    requestDate: new Date('2022-10-20 00:00:00'),
+  },
+  {
+    id: 2,
+    status: 0,
+    orderNumber: 3305,
+    productLine: 'Cement',
+    product: 'Gris CPC 30 R Monterrey Extra 50Kg.',
+    quantity: '10 TN',
+    requestDate: new Date('2022-10-10 00:00:00'),
+  },
+  {
+    id: 3,
+    status: 0,
+    orderNumber: 3290,
+    productLine: 'Aggregates',
+    product: 'Arena Triturada Caliza Malla 4',
+    quantity: '2 TN',
+    requestDate: new Date('2022-09-29 00:00:00'),
+  },
+  {
+    id: 4,
+    status: 2,
+    orderNumber: 3184,
+    productLine: 'Aggregates',
+    product: 'Arena Triturada Caliza Malla 4',
+    quantity: '5 TN',
+    requestDate: new Date('2022-05-14 00:00:00'),
+  },
+  {
+    id: 5,
+    status: 2,
+    orderNumber: 3295,
+    productLine: 'Cement',
+    product: 'Gris CPC30R Tolteca Extra 50Kg',
+    quantity: '12 TN',
+    requestDate: new Date('2022-04-05 00:00:00'),
+  },
+  {
+    id: 6,
+    status: 2,
+    orderNumber: 2994,
+    productLine: 'Ready-Mix',
+    product: '1-200-2-C-28-14-1-3-000',
+    quantity: '15.5 m3',
+    requestDate: new Date('2022-03-10 00:00:00'),
+  },
+];
