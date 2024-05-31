@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -17,6 +17,7 @@ const SEARCH_ICON = `
   imports: [CommonModule, ReactiveFormsModule, MatIconModule],
   templateUrl: './search-input.component.html',
   styleUrl: './search-input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchInputComponent {
   @Input({ required: true }) searchControl!: FormControl;

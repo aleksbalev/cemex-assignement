@@ -1,5 +1,5 @@
 import { CommonModule, KeyValuePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
@@ -19,6 +19,7 @@ import { DateRangePickerComponent } from '../../../shared/features/date-range-pi
   ],
   templateUrl: './filter-panel.component.html',
   styleUrl: './filter-panel.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterPanelComponent {
   @Input({ required: true }) formGroup!: FormGroup<FilterPanleForm>;
