@@ -1,12 +1,17 @@
-@import "../../../../styles/mixins.scss";
+@import "mixins.scss";
 
 .date-range-picker {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
 
   label {
     @include label;
+  }
+
+  @include respond-to("medium") {
+    flex-direction: row;
   }
 }
 

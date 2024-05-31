@@ -4,11 +4,11 @@
       @content;
     }
   } @else if $breakpoint == "large" {
-    @media (min-width: 1200px) {
+    @media (min-width: 955px) {
       @content;
     }
   } @else if $breakpoint == "extra-large" {
-    @media (min-width: 1600px) {
+    @media (min-width: 1200px) {
       @content;
     }
   }
@@ -23,7 +23,6 @@
   @include respond-to("large") {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
-    gap: 0;
     padding: $padding;
   }
 }
@@ -32,4 +31,18 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--color-title);
+}
+
+@mixin separator {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -25px;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-separator);
+  }
 }

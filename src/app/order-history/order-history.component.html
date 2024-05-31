@@ -1,14 +1,25 @@
 <section>
-  <app-filter-panel
-    [formGroup]="formGroup"
-    [productLineOptions]="productLineOptions"
-  ></app-filter-panel>
+  <div class="order-history__filter-panel">
+    <app-filter-panel
+      [formGroup]="formGroup"
+      [productLineOptions]="productLineOptions"
+    ></app-filter-panel>
 
-  <app-search-input [searchControl]="searchControl"></app-search-input>
+    <app-search-input
+      class="order-history__search"
+      [searchControl]="searchControl"
+    ></app-search-input>
+  </div>
 
-  <app-order-table
-    *ngIf="filteredOrders$ | async as orders"
-    [orders]="orders"
-    [columns]="ordersService.ordersColumns"
-  ></app-order-table>
+  <ng-container *ngIf="filteredOrders$ | async as orders">
+    <app-order-table
+      *ngIf="orders.length > 0; else noResult"
+      [orders]="orders"
+      [columns]="ordersColumns"
+    ></app-order-table>
+  </ng-container>
 </section>
+
+<ng-template #noResult>
+  <app-no-result></app-no-result>
+</ng-template>

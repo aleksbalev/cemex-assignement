@@ -1,4 +1,4 @@
-@import "../../../../styles/mixins.scss";
+@import "mixins.scss";
 
 .order-table {
   display: grid;
@@ -12,9 +12,18 @@
 
 .order-table__titles {
   @include table-view(0 20px 10px 20px);
+  max-width: 140px;
 
   color: var(--color-title);
   font-weight: 500;
+
+  span {
+    text-wrap: wrap;
+  }
+
+  @include respond-to("large") {
+    max-width: 100%;
+  }
 }
 
 .order-table__rows {
@@ -45,5 +54,6 @@
 
   @include respond-to("large") {
     flex-direction: column;
+    padding: 5px 0;
   }
 }
