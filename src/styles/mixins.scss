@@ -32,3 +32,17 @@
   font-weight: 500;
   color: var(--color-title);
 }
+
+@mixin separator {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -25px;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-separator);
+  }
+}

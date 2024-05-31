@@ -1,9 +1,10 @@
-@import "../../../../styles/mixins.scss";
+@import "mixins.scss";
 
 .filter-panel__form {
   display: flex;
 
   flex-direction: column;
+  gap: 20px;
 
   @include respond-to("large") {
     display: grid;
@@ -11,18 +12,20 @@
     grid-template-columns: auto minmax(160px, 1fr) auto;
     align-items: center;
   }
+
+  @include respond-to("extra-large") {
+    gap: 50px;
+  }
 }
 
 .filter-panel__statuses {
-  margin-bottom: 15px;
-
   form {
     margin-top: -11px;
     margin-left: -11px;
   }
 
-  @include respond-to("medium") {
-    margin-bottom: 0;
+  @include respond-to("extra-large") {
+    @include separator;
   }
 }
 
@@ -31,8 +34,6 @@
 
   display: flex;
   flex-direction: column;
-
-  margin-bottom: 15px;
 
   .filter-panel__select-wrapper {
     position: relative;
@@ -60,32 +61,42 @@
     &::after {
       content: "";
       position: absolute;
-      top: 10px;
+      top: 4px;
       right: 0;
       display: inline-block;
       width: 10px;
       height: 10px;
-      border-right: 0.1em solid var(--color-accent);
-      border-top: 0.1em solid var(--color-accent);
+      border-right: 2px solid var(--color-accent);
+      border-top: 2px solid var(--color-accent);
       transform: rotate(135deg);
-      margin-right: 0.5em;
-      margin-left: 1em;
+      margin-right: var(--spacing-sm);
+      margin-left: 16px;
+      pointer-events: none;
     }
   }
 
-  @include respond-to("medium") {
-    margin-bottom: 0;
+  @include respond-to("extra-large") {
+    @include separator;
   }
 }
 
 .filter-panel__date-range-picker {
   margin-bottom: 30px;
 
-  @include respond-to("medium") {
+  @include respond-to("large") {
     margin-bottom: 0;
   }
 }
 
 label {
   @include label;
+}
+
+.filter-panel__statuses,
+.filter-panel__product-line,
+.filter-panel__date-range-picker {
+  min-height: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

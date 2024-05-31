@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FilterPanelComponent } from './ui/filter-panel/filter-panel.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FilterPanleForm } from './interfaces/filter-panel';
-import { DateRangeState, Order } from '../shared/interfaces';
+import { DateRangeState, Order, OrderKeys } from '../shared/interfaces';
 import { SearchInputComponent } from '../shared/ui/search-input/search-input.component';
 import { OrderTableComponent } from './ui/order-table/order-table.component';
 import {
@@ -16,6 +16,7 @@ import {
   startWith,
 } from 'rxjs';
 import { applyOrdersFilters } from './utils/filter-utils';
+import { NoResultComponent } from './ui/no-result/no-result.component';
 
 // Smart Order History component manages bunch of dumb components
 // Focuses on filtrations and orders presentation
@@ -28,6 +29,7 @@ import { applyOrdersFilters } from './utils/filter-utils';
     FilterPanelComponent,
     SearchInputComponent,
     OrderTableComponent,
+    NoResultComponent,
   ],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.scss',
@@ -52,6 +54,14 @@ export default class OrderHistoryComponent {
   });
 
   protected productLineOptions = ['Ready-Mix', 'Cement', 'Aggregates'];
+  protected ordersColumns: OrderKeys = [
+    'status',
+    'orderNumber',
+    'productLine',
+    'product',
+    'quantity',
+    'requestDate',
+  ];
 
   protected filteredOrders$: Observable<Order[]>;
 

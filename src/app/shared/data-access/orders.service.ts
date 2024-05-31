@@ -1,11 +1,12 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { EMPTY, catchError } from 'rxjs';
+import { EMPTY, Subject, catchError } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Order, OrderKeys } from '../interfaces';
 
 export interface OrderState {
   orders: Order[];
+  errors?: string;
 }
 
 // Here I use state management approach with compination of Signals and observables
@@ -20,17 +21,12 @@ export class OrdersApiService {
   });
 
   // selectors
+  error = computed(() => this.state().errors);
   orders = computed(() => this.state().orders);
-  ordersColumns: OrderKeys = [
-    'status',
-    'orderNumber',
-    'productLine',
-    'product',
-    'quantity',
-    'requestDate',
-  ];
+
   // sources
   ordersLoaded$ = this.getOrdersList();
+  private error$ = new Subject<string | null>();
 
   constructor() {
     // reducers
@@ -40,12 +36,26 @@ export class OrdersApiService {
         orders: [...state.orders, ...orders],
       })),
     );
+
+    this.error$.pipe(takeUntilDestroyed()).subscribe((error) =>
+      this.state.update((state) => ({
+        ...state,
+        error,
+      })),
+    );
   }
 
-  // TODO: Create meaningfull error handeling
   private getOrdersList() {
-    return this.http
-      .get<Order[]>('/assets/files/orders-list.json')
-      .pipe(catchError((err) => EMPTY));
+    return this.http.get<Order[]>('/assets/files/orders-list.json').pipe(
+      catchError((err) => {
+        this.handleError(err);
+
+        return EMPTY;
+      }),
+    );
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    this.error$.next(err.statusText);
   }
 }

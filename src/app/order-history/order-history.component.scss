@@ -1,11 +1,11 @@
-@import "../../styles/mixins.scss";
+@import "mixins.scss";
 
 .order-history__filter-panel {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 
   background-color: white;
   border-radius: var(--border-radius);
