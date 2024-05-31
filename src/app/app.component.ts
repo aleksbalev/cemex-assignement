@@ -33,6 +33,7 @@ export class AppComponent {
   constructor() {
     effect(() => {
       const error = this.ordersService.error();
+      debugger;
 
       if (error !== null && error !== undefined) {
         this.snackBar.open(error, 'Dismiss', { duration: 2000 });

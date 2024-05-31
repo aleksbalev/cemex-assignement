@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -35,6 +35,7 @@ const INFO_ICON = `
       font-weight: 600;
     }
 `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoResultComponent {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {

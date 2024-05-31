@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Order, OrderKeys, OrderStatusEnum } from '../../../shared/interfaces';
 import { StatusParserPipe } from '../status-parser.pipe';
 
@@ -9,6 +9,7 @@ import { StatusParserPipe } from '../status-parser.pipe';
   imports: [CommonModule, StatusParserPipe],
   templateUrl: './order-row.component.html',
   styleUrl: './order-row.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrderRowComponent {
   statusEnum = OrderStatusEnum;
