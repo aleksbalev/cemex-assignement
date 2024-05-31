@@ -1,11 +1,12 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { EMPTY, Subject, catchError, map, of } from 'rxjs';
+import { EMPTY, Subject, catchError } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Order, OrderKeys } from '../interfaces';
+import { Order } from '../interfaces';
 
 export interface OrderState {
   orders: Order[];
+  loading: boolean;
   error: string | null;
 }
 
@@ -19,11 +20,13 @@ export class OrdersApiService {
   private state = signal<OrderState>({
     orders: [],
     error: null,
+    loading: true,
   });
 
   // selectors
   orders = computed(() => this.state().orders);
   error = computed(() => this.state().error);
+  loading = computed(() => this.state().loading);
 
   // sources
   ordersLoaded$ = this.getOrdersList();
@@ -34,12 +37,12 @@ export class OrdersApiService {
     this.ordersLoaded$.pipe(takeUntilDestroyed()).subscribe((orders) =>
       this.state.update((state) => ({
         ...state,
+        loading: false,
         orders: [...state.orders, ...orders],
       })),
     );
 
     this.error$.pipe(takeUntilDestroyed()).subscribe((error) => {
-      debugger;
       this.state.update((state) => ({
         ...state,
         error,
@@ -48,20 +51,6 @@ export class OrdersApiService {
   }
 
   private getOrdersList() {
-    return of(null).pipe(
-      map(() => {
-        throw new HttpErrorResponse({
-          error: 'Simulated network error',
-          status: 500,
-          statusText: 'Internal Server Error',
-        });
-      }),
-      catchError((err) => {
-        this.handleError(err);
-
-        return EMPTY;
-      }),
-    );
     return this.http.get<Order[]>('/assets/files/orders-list.json').pipe(
       catchError((err) => {
         this.handleError(err);
@@ -72,7 +61,6 @@ export class OrdersApiService {
   }
 
   private handleError(err: HttpErrorResponse) {
-    debugger;
     this.error$.next(err.statusText);
   }
 }

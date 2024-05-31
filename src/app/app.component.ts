@@ -22,7 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     .app-root__title {
       margin-bottom: 20px;
     }
-`,
+  `,
 })
 export class AppComponent {
   ordersService = inject(OrdersApiService);
@@ -33,7 +33,6 @@ export class AppComponent {
   constructor() {
     effect(() => {
       const error = this.ordersService.error();
-      debugger;
 
       if (error !== null && error !== undefined) {
         this.snackBar.open(error, 'Dismiss', { duration: 2000 });
