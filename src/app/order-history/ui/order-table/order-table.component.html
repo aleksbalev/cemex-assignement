@@ -3,11 +3,17 @@
     <span *ngFor="let column of columns">{{ columnName[column] }}</span>
   </div>
   <div class="order-table__rows">
-    <div *ngIf="ordersService.loading()" class="order-table__spinner">
+    <div
+      *ngIf="ordersService.loading(); else ordersTpl"
+      class="order-table__spinner"
+    >
       <mat-progress-spinner mode="indeterminate" color="accent" diameter="50" />
     </div>
-    <ng-container *ngFor="let order of orders">
-      <app-order-row [order]="order" [columns]="columns"></app-order-row>
-    </ng-container>
   </div>
 </div>
+
+<ng-template #ordersTpl>
+  <ng-container *ngFor="let order of orders">
+    <app-order-row [order]="order" [columns]="columns"></app-order-row>
+  </ng-container>
+</ng-template>
