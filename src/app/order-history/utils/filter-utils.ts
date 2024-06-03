@@ -28,6 +28,9 @@ export function applyOrdersFilters(
 
   const { pending, inProgress, completed } = filters.statuses || {};
 
+  // In my opinion solving this problem with different structure than if else
+  // would damage readability. But there for sure are more elegant variants
+  // I would think about them in more complex requirements
   if (pending && completed && inProgress) {
     // Show all
     let statusSpecification = new StatusSpecification(OrderStatusEnum.Pending)
